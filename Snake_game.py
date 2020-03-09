@@ -355,6 +355,8 @@ if __name__ == "__main__":
                             name += "Z"
                         if event.key == pygame.K_SPACE:
                             name += "_"
+                        if event.key == pygame.K_BACKSPACE:
+                            name = name[:len(name)-1]
                         if event.key == pygame.K_RETURN:
                             give_name = False
 
