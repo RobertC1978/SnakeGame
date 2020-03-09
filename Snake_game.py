@@ -23,6 +23,7 @@ first_score = False     # first score to write on list
 new_pause = False       # game pause
 acceleration = 1
 acceleration_score = 0      # cancel acceleration
+bonus_points = False
 
 
 
@@ -142,8 +143,9 @@ if __name__ == "__main__":
 
             # cancel acceleration
 
-            if Total_score == acceleration_score + 2:
+            if Total_score == acceleration_score + 4:
                 acceleration = 1
+                bonus_points = False
 
 
             time -= 1 / time_tick * acceleration        # time with acceleration
@@ -202,12 +204,16 @@ if __name__ == "__main__":
 
                     new_segment = Segment(class_screen=screen)
                     Snake.append(new_segment)
-                    Total_score += 1
+                    if bonus_points == True:
+                        Total_score += 2
+                    else:
+                        Total_score += 1
 
                     # check extra element color, if correct change acceleration
 
                     if Extra_segment[0].color == (0, 50, 200):
                         acceleration = 0.5
+                        bonus_points = True
                         acceleration_score = Total_score        # new variable to cancel acceleration
 
 
